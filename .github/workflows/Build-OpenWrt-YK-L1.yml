@@ -48,9 +48,7 @@ jobs:
         cat feeds.conf.default
 
     - name: Update feeds
-      run: |
-         cd openwrt && ./scripts/feeds update -a
-         cp ./feeds/helloworld/shadowsocksr-libev ./package/lean/
+      run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a

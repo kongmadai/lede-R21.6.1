@@ -10,11 +10,16 @@ s.anonymous = true
 
 o = s:option(DynamicList, "Cookies", translate("账号 Cookie 列表"))
 o.rmempty = false
-o.description = translate('双击输入框或点击添加图标即可调出二维码，扫码后自动填入。')
+o.description = translate('双击输入框可调出二维码，扫码后自动填入。')
 
 o = s:option(DummyValue, '', '')
 o.rawhtml = true
 o.template = 'jd-dailybonus/cookie_tools'
+
+o = s:option(DynamicList, "jrBody", translate('金融 POST Body'))
+o.rmempty = false
+o.default = ''
+o.description = translate('京东金融签到 POST Body（以reqData=开头），与上方的Cookies列表一一对应，没有可不填（可能导致京东金融签到失败）')
 
 o = s:option(Value, 'stop', translate('延迟签到'))
 o.rmempty = false

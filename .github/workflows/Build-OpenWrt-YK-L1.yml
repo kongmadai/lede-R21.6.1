@@ -3,11 +3,11 @@ name: Build OpenWrt-YK-L1
 on: 
   release:
     types: [published]
-  push:
-    branches: 
-      - main
-    paths:
-      - 'yk.config'
+#  push:
+#    branches: 
+#      - main
+#    paths:
+#      - 'yk.config'
   workflow_dispatch:
 #  schedule:
 #    - cron: 0 8 * * 5

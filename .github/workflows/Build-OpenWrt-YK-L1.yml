@@ -86,6 +86,7 @@ jobs:
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
+        echo "::set-output name=status::success"
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
@@ -100,6 +101,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
         upload_url: ${{ env.UPLOADURL }}
-        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin
-        asset_name: Youku_yk1-squashfs-sysupgrade.bin
+        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin
+        asset_name: Youku_L1-19.07.4-r211024-squashfs-sysupgrade.bin
         asset_content_type: application/octet-stream

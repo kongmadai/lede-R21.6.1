@@ -56,7 +56,7 @@ jobs:
 
     - name: Get uploadUrl
       run: |
-        uploadurl=`curl -s  https://api.github.com/repos/yulinsoft/lede-R21.6.1/releases/latest | sed -n '/upload_url/p' |  cut -d '"' -f 4`
+        uploadurl=`curl -s  https://api.github.com/repos/kongmadai/lede-R21.6.1/releases/latest | sed -n '/upload_url/p' |  cut -d '"' -f 4`
         df -h
         pwd
         echo $uploadurl

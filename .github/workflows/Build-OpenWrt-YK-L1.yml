@@ -104,13 +104,13 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
- #   - name: Multi-thread compile K2
- #     id: compile
- #     run: |
- #       cd openwrt
- #       echo -e "$(nproc) thread compile"
- #       make -j$(nproc) || make -j1 || make -j1 V=s
- #       echo "::set-output name=status::success"
+    - name: Multi-thread compile K2
+      id: compile
+      run: |
+        cd openwrt
+        echo -e "$(nproc) thread compile"
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        echo "::set-output name=status::success"
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
@@ -119,15 +119,15 @@ jobs:
         name: 7620_bin
         path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin
 
-#    - name: Upload ykl1 Release Asset
-#      uses: actions/upload-release-asset@v1.0.1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-#      with:
-#        upload_url: ${{ env.UPLOADURL }}
-#        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin
-#        asset_name: Youku_L1-19.07.4-r211024-squashfs-sysupgrade.bin
-#        asset_content_type: application/octet-stream
+    - name: Upload ykl1 Release Asset
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        upload_url: ${{ env.UPLOADURL }}
+        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin
+        asset_name: Youku_L1-19.07.4-r211024-squashfs-sysupgrade.bin
+        asset_content_type: application/octet-stream
 
     - name: Upload firmware to cowtransfer
       id: cowtransfer
@@ -150,15 +150,15 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}
 
- #   - name: Upload K2 Release Asset
- #     uses: actions/upload-release-asset@v1.0.1
- #     env:
- #       GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
- #     with:
- #       upload_url: ${{ env.UPLOADURL }}
- #       asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-phicomm_psg1218a-squashfs-sysupgrade.bin
- #       asset_name: K2-19.07.4-r211024-squashfs-sysupgrade.bin
- #       asset_content_type: application/octet-stream
+    - name: Upload K2 Release Asset
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        upload_url: ${{ env.UPLOADURL }}
+        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-phicomm_psg1218a-squashfs-sysupgrade.bin
+        asset_name: K2-19.07.4-r211024-squashfs-sysupgrade.bin
+        asset_content_type: application/octet-stream
 
     - name: Compress Soft Package
       run: |
@@ -167,15 +167,15 @@ jobs:
         tar -zcvf 7620Packages.tar.gz ./bin/
         echo "Compress success!"   
 
-#    - name: Upload 7620Packages Release Asset
-#      uses: actions/upload-release-asset@v1.0.1
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-#      with:
-#        upload_url: ${{ env.UPLOADURL }}
-#        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/7620Packages.tar.gz
-#        asset_name: 7620Packages.tar.gz
-#        asset_content_type: application/octet-stream
+    - name: Upload 7620Packages Release Asset
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        upload_url: ${{ env.UPLOADURL }}
+        asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/7620Packages.tar.gz
+        asset_name: 7620Packages.tar.gz
+        asset_content_type: application/octet-stream
         
     - name: Generate release tag
       id: tag

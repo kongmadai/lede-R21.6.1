@@ -15,7 +15,7 @@ on:
 #    types: [started]
 
 env:
-  REPO_URL: https://github.com/yulinsoft/lede-R21.6.1
+  REPO_URL: https://github.com/kongmadai/lede-R21.6.1
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config

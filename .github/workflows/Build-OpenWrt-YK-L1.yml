@@ -21,6 +21,7 @@ env:
   CONFIG_FILE: .config
   UPLOAD_BIN_DIR: true
   UPLOAD_RELEASE: true
+  UPLOAD_COWTRANSFER: true
 
 jobs:
   build:
@@ -164,3 +165,15 @@ jobs:
         asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/7620Packages.tar.gz
         asset_name: 7620Packages.tar.gz
         asset_content_type: application/octet-stream
+        
+    - name: Generate release tag
+      id: tag
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")"
+        touch release.txt
+        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "::set-output name=status::success"
+        
+        

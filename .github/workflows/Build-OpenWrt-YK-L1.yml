@@ -20,6 +20,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   UPLOAD_BIN_DIR: true
+  UPLOAD_RELEASE: true
 
 jobs:
   build:
@@ -126,6 +127,16 @@ jobs:
         asset_path: /home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin
         asset_name: Youku_L1-19.07.4-r211024-squashfs-sysupgrade.bin
         asset_content_type: application/octet-stream
+
+    - name: Upload firmware to cowtransfer
+      id: cowtransfer
+      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+      run: |
+        echo "FIRMWARE=/home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin" >> $GITHUB_ENV
+        curl -fsSL git.io/file-transfer | sh
+        ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
+        echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
+        echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
 
     - name: Upload K2 Release Asset
       uses: actions/upload-release-asset@v1.0.1

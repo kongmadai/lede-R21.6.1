@@ -131,7 +131,7 @@ jobs:
 
     - name: Upload firmware to cowtransfer
       id: cowtransfer
-      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
+#      if: steps.organize.outputs.status == 'success' && env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
       run: |
         echo "FIRMWARE=/home/runner/work/lede-R21.6.1/lede-R21.6.1/openwrt/bin/targets/ramips/mt7620/openwrt-19.07.4-r211024-ramips-mt7620-youku_yk1-squashfs-sysupgrade.bin" >> $GITHUB_ENV
         curl -fsSL git.io/file-transfer | sh
@@ -142,7 +142,7 @@ jobs:
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
+#      if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:

@@ -14,6 +14,8 @@ rm -rf package/lean/xray-core
 pushd package/lean
 git clone --depth=1 https://github.com/fw876/helloworld
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus package/luci-app-ssr-plus
+git clone https://github.com/fw876/helloworld/tree/master/xray-core package/xray-core
 popd
 
 #添加smartdns

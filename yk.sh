@@ -4,7 +4,7 @@
 # Lisence: MIT
 # Author: yulinsoft
 #=================================================
-echo 'modify completed.'
+#echo 'modify completed.'
 
 # Add luci-app-ssr-plus
 rm -rf package/helloworld

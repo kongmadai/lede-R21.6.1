@@ -7,4 +7,6 @@ src-git luci https://github.com/coolsnowwolf/luci.git^974fb045f86ac0f3667eff6a6b
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
 #src-git helloworld https://github.com/fw876/helloworld.git^5c3542623c6d53f17f48b98246ca6790af0558ec #R21.6.1
-src-git helloworld https://github.com/fw876/helloworld.git^3f549ea84218a2aab57bd08b0fb1576bb428459b
+#src-git helloworld https://github.com/fw876/helloworld.git^3f549ea84218a2aab57bd08b0fb1576bb428459b
+
+src-git helloworld https://github.com/fw876/helloworld.git

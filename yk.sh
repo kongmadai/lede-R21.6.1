@@ -8,15 +8,15 @@ echo 'modify completed.'
 
 
 # Add luci-app-ssr-plus
-rm -rf package/helloworld
-rm -rf package/lean/luci-app-ssr-plus
-rm -rf package/lean/xray-core
-pushd package/lean
-git clone --depth=1 https://github.com/fw876/helloworld
-git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus package/luci-app-ssr-plus
-git clone https://github.com/fw876/helloworld/tree/master/xray-core package/xray-core
-popd
+#rm -rf package/helloworld
+#rm -rf package/lean/luci-app-ssr-plus
+#rm -rf package/lean/xray-core
+#pushd package/lean
+#git clone --depth=1 https://github.com/fw876/helloworld
+#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+#git clone https://github.com/fw876/helloworld/tree/master/luci-app-ssr-plus package/luci-app-ssr-plus
+#git clone https://github.com/fw876/helloworld/tree/master/xray-core package/xray-core
+#popd
 
 #添加smartdns
 #git clone https://github.com/kiddin9/luci-app-dnsfilter.git package/luci-app-dnsfilter
